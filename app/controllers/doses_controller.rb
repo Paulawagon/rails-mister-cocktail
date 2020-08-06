@@ -1,5 +1,5 @@
 class DosesController < ApplicationController
-    before_action :set_dose, only: [:show, :destroy, :edit]
+  #
 
      def index
        @doses = Dose.all
@@ -25,18 +25,18 @@ class DosesController < ApplicationController
        end
      end
 
-     def edit
-     end
+    def edit
+    end
 
-     def destroy
-       @dose.destroy
-       redirect_to cocktail_path(@dose.cocktail)
-     end
-
+    def destroy
+      @dose.destroy
+      redirect_to doses_path
+    end
+    
      private
 
      def dose_params
-       params.require(:dose).permit(:cocktail_id, :ingredient_id, :quantity, :description)
+       params.require(:dose).permit(:cocktail_id, :ingredient_id, :description)
      end
 
      def set_dose
